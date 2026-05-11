@@ -177,13 +177,11 @@ const styles = StyleSheet.create({
   flowRow: {
     flexDirection: 'row',
     alignItems: 'center',
-    justifyContent: 'space-between',
     paddingVertical: 4,
   },
   node: {
     flexDirection: 'row',
     alignItems: 'center',
-    flex: 1,
   },
   circle: {
     width: 36,
@@ -230,12 +228,12 @@ const styles = StyleSheet.create({
     color: '#007AFF',
   },
   nodeLabel: {
-    fontSize: 12,
+    fontSize: 14,
     fontWeight: '600',
     color: '#1A1C1E',
   },
   flowArrow: {
-    marginHorizontal: 10,
+    marginHorizontal: 12,
   },
   tabBar: {
     flexDirection: 'row',
