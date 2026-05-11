@@ -105,11 +105,14 @@ const ConnectionDetailScreen = () => {
           <Text style={styles.sectionTitle}>Obligation Terms</Text>
           {renderObligations(currentEntity.obligations, 'obligation')}
 
-          {currentEntity.forbidden && currentEntity.forbidden.length > 0 && (
-            <>
-              <Text style={[styles.sectionTitle, { marginTop: 20 }]}>Forbidden Terms</Text>
-              {renderObligations(currentEntity.forbidden, 'forbidden')}
-            </>
+          <Text style={[styles.sectionTitle, { marginTop: 20 }]}>Forbidden Terms</Text>
+          {currentEntity.forbidden && currentEntity.forbidden.length > 0 ? (
+            renderObligations(currentEntity.forbidden, 'forbidden')
+          ) : (
+            <View style={styles.termItem}>
+              <Ionicons name="information-circle" size={20} color="#909499" />
+              <Text style={styles.termText}>{currentEntity.forbiddenMessage || 'No forbidden items available'}</Text>
+            </View>
           )}
         </View>
       </ScrollView>

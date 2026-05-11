@@ -8,25 +8,18 @@ export const connectionData = {
     type: "Host",
     lockerId: "locker_kaveri_092",
     obligations: [
-      "Ensure 99.9% availability of health record endpoints.",
-      "Encrypt all data in transit using TLS 1.3.",
-      "Maintain audit logs of all access requests for 2 years.",
-      "Provide a recovery mechanism for lost data keys."
+      "Host will consider Transperent Detail Documents - provides the patient's transperent details for authorized medical use.",
     ],
-    forbidden: [
-      "Sharing patient data with third-party marketing agencies.",
-      "Storing raw biometric data in unencrypted format."
-    ]
+    forbiddenMessage: "No forbidden items avaliable"
   },
   guest: {
     name: "Meghana",
     type: "Guest",
     lockerId: "locker_meghana_441",
     obligations: [
-      "Use data only for intended medical consultation purposes.",
-      "Notify host immediately of any credential compromise.",
-      "Do not store downloaded records on public cloud storage."
+      "Guest shall share ID Proof - KYC verification of Patient",
+      "Guest shall share Insurance Policy Document - To verify that patient has an insurance plan"
     ],
-    forbidden: [] // Testing the "if available" condition
+    forbiddenMessage: "No forbidden items avaliable"
   }
 };
