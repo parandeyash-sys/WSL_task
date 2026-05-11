@@ -38,21 +38,45 @@ const ConnectionDetailScreen = () => {
           <View style={styles.statusBadge}>
             <Text style={styles.statusText}>{data.status}</Text>
           </View>
-          <Text style={styles.title}>{data.name}</Text>
-          <Text style={styles.description}>{data.description}</Text>
+          <Text style={styles.title}>Patient Health Records Connection-Meghana:Kaveri Hospital</Text>
+          <View style={styles.descriptionContainer}>
+            <Text style={styles.description}>Connection name-Patient Health Records Connection-Meghana:Kaveri Hospital</Text>
+            <Text style={styles.description}>Connection through which Patients can Avail their Health Records</Text>
+          </View>
         </View>
 
-        {/* Entity Info */}
-        <View style={styles.entitySection}>
-          <View style={styles.entityCard}>
-            <Text style={styles.entityLabel}>Guest</Text>
-            <Text style={styles.entityName}>{data.guest.name}</Text>
-            <Text style={styles.lockerId}>{data.guest.lockerId}</Text>
+        {/* Entity Flow Diagrams */}
+        <View style={styles.flowCard}>
+          {/* Row 1: Participants */}
+          <View style={styles.flowRow}>
+            <View style={styles.node}>
+              <View style={styles.circle}><Text style={styles.circleText}>G</Text></View>
+              <Text style={styles.nodeLabel}>: {data.guest.name}</Text>
+            </View>
+            <Ionicons name="arrow-forward" size={24} color="#007AFF" style={styles.flowArrow} />
+            <View style={styles.node}>
+              <View style={styles.circle}><Text style={styles.circleText}>H</Text></View>
+              <Text style={styles.nodeLabel}>: {data.host.name}</Text>
+            </View>
           </View>
-          <View style={styles.entityCard}>
-            <Text style={styles.entityLabel}>Host</Text>
-            <Text style={styles.entityName}>{data.host.name}</Text>
-            <Text style={styles.lockerId}>{data.host.lockerId}</Text>
+
+          {/* Row 2: Lockers */}
+          <View style={styles.flowRow}>
+            <View style={styles.node}>
+              <View style={styles.lockContainer}>
+                <Ionicons name="lock-closed" size={32} color="#007AFF" />
+                <View style={styles.attachedCircle}><Text style={styles.smallCircleText}>G</Text></View>
+              </View>
+              <Text style={styles.nodeLabel}>: Meghana Health Document Locker</Text>
+            </View>
+            <Ionicons name="arrow-forward" size={24} color="#007AFF" style={styles.flowArrow} />
+            <View style={styles.node}>
+              <View style={styles.lockContainer}>
+                <Ionicons name="lock-closed" size={32} color="#007AFF" />
+                <View style={styles.attachedCircle}><Text style={styles.smallCircleText}>H</Text></View>
+              </View>
+              <Text style={styles.nodeLabel}>: Health Records Locker</Text>
+            </View>
           </View>
         </View>
 
@@ -131,40 +155,87 @@ const styles = StyleSheet.create({
     color: '#1A1C1E',
     marginBottom: 8,
   },
+  descriptionContainer: {
+    marginTop: 4,
+  },
   description: {
     fontSize: 14,
     color: '#606469',
     lineHeight: 20,
   },
-  entitySection: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    marginBottom: 20,
-  },
-  entityCard: {
-    flex: 0.48,
+  flowCard: {
     backgroundColor: '#FFFFFF',
     borderRadius: 12,
-    padding: 12,
+    padding: 16,
+    marginBottom: 16,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 1 },
+    shadowOpacity: 0.05,
+    shadowRadius: 5,
+    elevation: 2,
+  },
+  flowRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    paddingVertical: 4,
+  },
+  node: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    flex: 1,
+  },
+  circle: {
+    width: 36,
+    height: 36,
+    borderRadius: 18,
+    backgroundColor: '#E8F2FF',
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginRight: 6,
     borderWidth: 1,
-    borderColor: '#E1E4E8',
+    borderColor: '#007AFF',
   },
-  entityLabel: {
-    fontSize: 10,
-    color: '#909499',
-    textTransform: 'uppercase',
-    letterSpacing: 0.5,
-    marginBottom: 4,
+  circleText: {
+    fontSize: 14,
+    fontWeight: 'bold',
+    color: '#007AFF',
   },
-  entityName: {
-    fontSize: 15,
+  lockContainer: {
+    width: 40,
+    height: 40,
+    alignItems: 'center',
+    justifyContent: 'center',
+    position: 'relative',
+    marginRight: 6,
+  },
+  attachedCircle: {
+    position: 'absolute',
+    bottom: 2,
+    right: 2,
+    width: 16,
+    height: 16,
+    borderRadius: 8,
+    backgroundColor: '#E8F2FF',
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderWidth: 1,
+    borderColor: '#007AFF',
+    zIndex: 1,
+  },
+  smallCircleText: {
+    fontSize: 8,
+    fontWeight: 'bold',
+    color: '#007AFF',
+  },
+  nodeLabel: {
+    fontSize: 12,
     fontWeight: '600',
     color: '#1A1C1E',
   },
-  lockerId: {
-    fontSize: 12,
-    color: '#007AFF',
-    marginTop: 2,
+  flowArrow: {
+    marginHorizontal: 10,
   },
   tabBar: {
     flexDirection: 'row',
